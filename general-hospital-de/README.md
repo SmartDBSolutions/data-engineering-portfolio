@@ -4,7 +4,7 @@ An Azure Data Engineering Project
 
 
 
-![charles-leclerc-ferrari-sf-23-](https://github.com/vedanthv/data-engineering-projects/assets/44313631/4e8c3e14-0652-4ebc-b418-3e906526c6e4)
+![General Hospital](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/ec64868e55a984590a4887c2fbc43844d18a7fec/general-hospital-de/images/hospital.jpg)
 
 ## A Brief Introduction to General Hospital Schema
 
@@ -94,7 +94,7 @@ Azure Synapse Workspace:
 This workspace provides a unifiedenvironment for interacting with Synapse Analytics.
 
 
-<img src = "https://github.com/vedanthv/data-engineering-projects/blob/main/formula-1-analytics-engg/static/formula1-solution-architecture.png">
+![Architecture Diagram](documentation/architecture diagram.png)
 
 
 ### Visualizations
