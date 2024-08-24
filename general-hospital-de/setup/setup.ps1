@@ -4,12 +4,6 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 # Install-Module -Name Az.Synapse -Force
 # Install-Module -Name AzureAD
 
-$loc = $PSScriptRoot
-
-Write-Output $loc
-
-Connect-AzAccount
-
 # Handle cases where the user has multiple subscriptions
 $subs = Get-AzSubscription | Select-Object
 if($subs.GetType().IsArray -and $subs.length -gt 1){
@@ -48,9 +42,10 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
 # Prompt user for a password for the SQL Database
 $sqlUser = "SQLUser"
 write-host ""
-$sqlPassword = ""
-$complexPassword = 0
+$sqlPassword = "N0MorePasswordz!"
+$complexPassword = 1
 
+<#
 while ($complexPassword -ne 1)
 {
     $SqlPassword = Read-Host "Enter a password to use for the $sqlUser login.
@@ -72,6 +67,7 @@ while ($complexPassword -ne 1)
         Write-Output "$SqlPassword does not meet the complexity requirements."
     }
 }
+#>
 
 # Register resource providers
 Write-Host "Registering resource providers...";
@@ -85,9 +81,10 @@ foreach ($provider in $provider_list){
 # Generate unique random suffix
 [string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
-$resourceGroupName = "dp203-$suffix"
+$resourceGroupName = "hospital-$suffix"
 
 # Choose a random region
+<#
 Write-Host "Finding an available region. This may take several minutes...";
 $delay = 0, 30, 60, 90, 120 | Get-Random
 Start-Sleep -Seconds $delay # random delay to stagger requests from multi-student classes
@@ -133,6 +130,8 @@ $Region = $locations.Get($rand).Location
         }
     }
 }
+#>
+$Region = "centralus"
 Write-Host "Creating $resourceGroupName resource group in $Region ..."
 New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
 
@@ -142,20 +141,19 @@ $dataLakeAccountName = "datalake$suffix"
 $sparkPool = "spark$suffix"
 $sqlDatabaseName = "sql$suffix"
 
-
 write-host "Creating $synapseWorkspace Synapse Analytics workspace in $resourceGroupName resource group..."
 write-host "(This may take some time!)"
-$templateFile = $loc\setup.json
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
-  -TemplateFile $templateFile
-  -Mode Complete `
-  -workspaceName $synapseWorkspace `
-  -dataLakeAccountName $dataLakeAccountName `
-  -sparkPoolName $sparkPool `
-  -sqlDatabaseName $sqlDatabaseName `
-  -sqlUser $sqlUser `
-  -sqlPassword $sqlPassword `
-  -uniqueSuffix $suffix `
+
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName
+  -Mode Complete
+  -TemplateFile setup.json
+  -workspaceName $synapseWorkspace
+  -dataLakeAccountName $dataLakeAccountName 
+  -sparkPoolName $sparkPool
+  -sqlDatabaseName $sqlDatabaseName
+  -sqlUser $sqlUser
+  -sqlPassword $sqlPassword
+  -uniqueSuffix $suffix
   -Force
 
 # Pause Data Explorer pool
@@ -178,7 +176,7 @@ sqlcmd -S "$synapseWorkspace.sql.azuresynapse.net" -U $sqlUser -P $sqlPassword -
 
 # Load data
 write-host "Loading data..."
-Get-ChildItem "./data/*.csv" -File | Foreach-Object {
+Get-ChildItem "./hospital_data/*.csv" -File | Foreach-Object {
     write-host ""
     $file = $_.FullName
     Write-Host "$file"
@@ -194,7 +192,7 @@ Suspend-AzSynapseSqlPool -WorkspaceName $synapseWorkspace -Name $sqlDatabaseName
 write-host "Loading data..."
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName
 $storageContext = $storageAccount.Context
-Get-ChildItem "./files/*.csv" -File | Foreach-Object {
+Get-ChildItem "./hospital_data/*.csv" -File | Foreach-Object {
     write-host ""
     $file = $_.Name
     Write-Host $file
