@@ -94,7 +94,7 @@ Azure Synapse Workspace:
 This workspace provides a unifiedenvironment for interacting with Synapse Analytics.
 
 
-![Architecture Diagram](documentation/architecture diagram.png)
+![Architecture Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/91c72cfd4406114a3bf326259af5d1aa00d5d797/general-hospital-de/documentation/architecture%20diagram.svg)
 
 
 ### Visualizations
