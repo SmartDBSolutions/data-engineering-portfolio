@@ -12,7 +12,12 @@ An Azure Data Engineering Project
 
 **Encounters**: This file contains the encounter related data for a patient interaction between healthcare provider and patient, such as admission datetime, and provider information.
 
-**OrdersProcedures**: This file contains details about the orders related to a 
+**OrdersProcedures**: This file contains details about the orders related to a patient.
+
+**Physicians**:  Ordering physicians and physician related to patient encounters
+
+![ER Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/main/general-hospital-de/documentation/er%20diagram.svg)
+
 
 ## What is Data Engineering
 
@@ -70,7 +75,7 @@ This solutions uses Azure Data Platform services to fulfill the requirements.
 8. Azure Active Directory and Azure Key Vault: To enhance security access to the different data in the cloud.  The Key Vault securely stores sensitive information like passwords and keys.
 
 
-![Architecture Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/91c72cfd4406114a3bf326259af5d1aa00d5d797/general-hospital-de/documentation/architecture%20diagram.svg)
+![Architecture Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/main/general-hospital-de/documentation/architecture%20diagram.svg)
 
 
 ### Visualizations and Dashboard
