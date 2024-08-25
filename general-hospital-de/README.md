@@ -66,34 +66,24 @@ This section should list any major frameworks/libraries used to bootstrap your p
 7. Azure Active Directory and Azure Key Vault: To enhance security access to the different data in the cloud.
 
 
+To achieve this, a number of Azure services and structures are utilized:
 
-To achieve this, we'll leverage a powerful combination of Azure services:
+Resource Group - All the services used in the solutions are created and grouped together logically for lifecycle maintenance.
 
 Azure Data Factory (ADF):
-Our data movement workhorse, ADFseamlessly extracts data from the on-premise database.
+Our data movement workhorse, ADF seamlessly extracts data from the on-premise database.
+
+Azure Data Lake Storage Gen2 (ADLS Gen2):
+A highly scalable storage solution for the raw (bronze layer), processed (silver layer) and ready for loading (gold).
 
 Azure Key Vault:
-The guardian of secrets, Key Vault securely storessensitive information like passwords.
+The Key Vault securely stores sensitive information like passwords.
 
 Azure Synapse Analytics (Synapse):
-Our cloud-based datawarehouse, optimized for querying and analyzing the transformeddata.
+A cloud-based data warehouse that is optimized for querying and analyzing the transformed data.  The Azure Synapse Workspace provides a unified environment for interacting with Synapse Analytics.
 
 Power BI:
-The king of data visualization, Power BI lets us createinteractive reports and dashboards to gain insights from the data.
-
-Setting the Stage:
-The first step is creating the necessary resources within Azure. We'll utilizea
-Resource Group
-to logically group all the services needed for this
-
-This is the conductor of our data pipeline,orchestrating the data movement process.
-Azure Data Lake Storage Gen2 (ADLS Gen2):
-
-This serves as ourlanding zone in the cloud, a highly scalable storage solution for theraw data.
-
-Azure Synapse Workspace:
-This workspace provides a unifiedenvironment for interacting with Synapse Analytics.
-
+Power BI lets us create interactive reports and dashboards to gain insights from the data.
 
 ![Architecture Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/91c72cfd4406114a3bf326259af5d1aa00d5d797/general-hospital-de/documentation/architecture%20diagram.svg)
 
