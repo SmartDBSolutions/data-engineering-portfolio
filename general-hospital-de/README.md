@@ -8,13 +8,14 @@ An Azure Data Engineering Project
 
 ## A Brief Introduction to General Hospital Schema
 
-**Patients**: Formula 1 cars are cutting-edge, single-seat racing machines with advanced aerodynamics and powerful engines. They are designed for maximum speed and agility.
-
-**Encounters**: F1 races take place on a variety of tracks, including purpose-built circuits and temporary street circuits in cities around the world.
-
-**OrdersProcedures**: Multiple teams, each with two drivers, compete in the championship. Prominent teams include Mercedes, Ferrari, Red Bull Racing, and McLaren.
+**Patients**: This file contains patient related data such as patient address and demographic information.
+**Encounters**: This file contains the encounter related data for a patient interaction between healthcare provider and patient, such as admission datetime, and provider information.
+**OrdersProcedures**: This file contains details about the orders related to a 
 
 ## What is Data Engineering
+
+Data engineering is the process of designing and building systems that let people collect and analyze raw data from multiple sources and formats.  Azure is Microsoft's cloud offering and contains a number of services for Data Ingestion, Storage, Transformation, and Serving (Power BI)
+
 
 ## Project Requirements
 
@@ -36,9 +37,9 @@ An Azure Data Engineering Project
 
 ### Analysis Requirements
 
-- Dominant Patient Encounter dates
+- Patient Encounter dates
 
-- Dominant Teams
+- Most in-demand providers
 
 - Create PowerBI Dashboards
 
@@ -97,5 +98,6 @@ This workspace provides a unifiedenvironment for interacting with Synapse Analyt
 ![Architecture Diagram](https://github.com/SmartDBSolutions/data-engineering-portfolio/blob/91c72cfd4406114a3bf326259af5d1aa00d5d797/general-hospital-de/documentation/architecture%20diagram.svg)
 
 
-### Visualizations
+### Visualizations and Dashboard
+Coming soon!
 
